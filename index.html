@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- WEBSITE TITLE -->
+    <title>مكتبة بَصيرة - بوابتك إلى المعرفة</title>
+
+    <!-- WEBSITE DESCRIPTION -->
+    <meta name="description" content=" مكتبة رقمية شاملة تضم أجمل الكتب العربية في الإسلام وعلومه، والأدب، وعلم النفس، والعلوم المختلفة. ">
+
+    <!-- WEBSITE ICON -->
+    <link rel="icon" type="image/x-icon" href="Basira.ico">
+
+    <!-- OPEN GRAPH META TAGS FOR SOCIAL MEDIA SHARING -->
+    <meta property="og:title" content="مكتبة بَصيرة - بوابتك إلى المعرفة" />
+    <meta property="og:description" content="مكتبة رقمية شاملة تضم أجمل الكتب العربية في الإسلام وعلومه، والأدب، وعلم النفس، والعلوم المختلفة." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="Basira.ico" />
+    <meta property="og:url" content="https://domain.com"/>
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="GE.css">
+
+    <!-- lIBRARY OF ICONS AND FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+<!-- ##### HEADER ##### -->
+<header class="main-header">
+  <div class="container">
+    
+    <div class="logo-section">
+        <div class="logo-icon">
+        <span class="book-icon"><i class="fa-solid fa-book-open"></i></span>
+      </div>
+      <div class="text-content">
+        <h1>مكتبة بَصيرة</h1>
+        <p>بوابتك إلى المعرفة</p>
+      </div>
+      
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="ابحث عن كتاب أو مؤلف..." dir="rtl">
+      <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
+
+  </div>
+</header>
+
+<!-- ##### HERO SECTION ##### -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>اكتشف كنوز المعرفة العربية</h1>
+    <p>مكتبة رقمية شاملة تضم أجمل الكتب العربية في الإسلام وعلومه، والأدب، وعلم النفس، والعلوم المختلفة.</p>
+  </div>
+<!-- ##### FILTER TAGS ##### -->
+  <div class="filter-tags">
+    <button class="tag active" data-filter="all">الكل</button>
+    <button class="tag" data-filter="philosophy">فلسفة</button>
+    <button class="tag" data-filter="Islamic">كتب دينية</button>
+    <button class="tag" data-filter="biography">سيرة ذاتية</button>
+    <button class="tag" data-filter="memoir">السيرة النبوية</button>
+  </div>
+</section>
+
+<!-- ##### CONTENT SECTION #####  -->
+<main class="books-container">
+  <div class="stats-bar">
+    <span dir="ltr" id="bookCount" >0 : كتاب</span> <!-- عدد الكتب -->
+  </div>
+<!-- ##### ADD BOOKS #####  -->  
+  <div class="books-grid" id="booksGrid">
+    <!-- الكتب هتتضاف هنا ديناميكياً بواسطة JavaScript -->
+    </div>
+</main>
+
+<!-- ##### Modal View book details ##### -->
+<div id="bookModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div class="modal-body">
+    <div class="modal-image">
+    <img id="modalImg" src="" alt="غلاف الكتاب" style="width:100%; height:100%; object-fit:contain;">
+    </div>
+      <div class="modal-text">
+        <h2 id="modalTitle">اسم الكتاب</h2>
+        <p class="modal-category" id="modalCategory">التصنيف</p>
+        <hr>
+        <p><strong>المؤلف:</strong> <span id="modalAuthor">اسم المؤلف</span></p>
+        <p><strong>سنة النشر:</strong> <span id="modalYear">السنة</span></p>
+        <p class="description" id="modalDescription"> الوصف </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- ##### FOOTER #####  -->  
+  <footer class="main-footer">
+  <div class="footer-container">
+    
+    <div class="footer-logo">
+      <span class="logo-text">مكتبة بَصيرة</span>
+      <div class="logo-box"><i class="fa-solid fa-book-open"></i></div>
+    </div>
+
+    <p class="made-with">
+      صُنع بـ <a href="https://t.me/Basira_official00" target="_blank" class="heart">Basira_Official</a> الثقافة العربية
+    </p>
+
+    <p class="copyright">
+       &copy; 2026 جميع الحقوق محفوظة
+    </p>
+
+  </div>
+</footer>
+
+
+<script src="GE.js"></script>
+</body>
+</html>

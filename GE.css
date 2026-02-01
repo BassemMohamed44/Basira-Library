@@ -1,0 +1,540 @@
+/* تنسيقات عامة */
+body {
+  margin: 0;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif; /* إضافة خط Cairo */
+  background-color: #fcfbf7;
+  overflow-x: hidden; /* منع التمرير الأفقي */
+}
+
+.main-header {
+    transition: all 0.3s ease;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* رفع قيمة الـ z-index لضمان الظهور */
+    background-color: rgba(252, 251, 247, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 5px 5%; /* تقليل الـ padding من 10 لـ 5 لصغير الارتفاع */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- تنسيق قسم الشعار (الشمال) --- */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: right;
+}
+
+.logo-icon {
+    background-color: #2d4f43;
+    color: white;
+    width: 38px; /* تصغير الأيقونة من 45 لـ 38 */
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+
+}
+
+.text-content h1 {
+    margin: 0;
+    font-size: 20px; /* تصغير حجم العنوان قليلاً ليتناسب مع الهيدر الصغير */
+    color: #1a3c34;
+    line-height: 1.2;
+}
+
+.text-content p {
+    margin: 0;
+    font-size: 12px; /* تصغير حجم الوصف */
+    color: #7a7a7a;
+}
+/* --- تنسيق شريط البحث (اليمين) --- */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 320px; /* تقليل العرض الأقصى للبحث */
+}
+
+.search-container input {
+    width: 100%;
+    padding: 8px 40px 8px 15px; /* تقليل الـ padding الداخلي */
+    border: 1px solid #e0ddd5;
+    border-radius: 10px;
+    background-color: #f4f1ea;
+    outline: none;
+    font-size: 13px; /* تصغير الخط */
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px; /* ضبط مكان الأيقونة */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 12px;
+}
+
+
+/* تنسيق قسم الهيرو */
+.hero-section {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fcfbf7; /* نفس خلفية الهيدر */
+}
+
+.hero-content h1 {
+    font-size: clamp(24px, 5vw, 42px); /* حجم خط مرن يتغير مع حجم الشاشة */
+    color: #1a3c34;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: clamp(14px, 2vw, 18px);
+    color: #8c8c8c;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+}
+
+/* تنسيق الحاويات الخاصة بالأزرار */
+.filter-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+/* التنسيق العام للزر (التاغ) */
+.tag {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #f1ede4;
+    transition: 0.3s;
+}
+
+/* تنسيق الزر النشط (الكل) */
+.tag.active {
+  background-color: #2d4f43; /* اللون الأخضر الداكن */
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(45, 79, 67, 0.2);
+}
+
+/* تأثير التمرير على الأزرار */
+.tag:hover:not(.active) {
+  background-color: #e5e0d5;
+}
+
+/* تجاوب التصميم مع الشاشات الصغيرة */
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 28px;
+  }
+  .hero-content p {
+    font-size: 15px;
+  }
+  .tag {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+}
+
+
+
+/* تنسيق الحاوية الرئيسية */
+.books-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  direction: rtl; /* اتجاه الكتابة عربي */
+}
+
+/* سطر عدد الكتب */
+.stats-bar {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #8c8c8c;
+  font-size: 14px;
+}
+
+/* إعدادات شبكة البطاقات (Grid) */
+.books-grid {
+    display: grid;
+    /* توزيع تلقائي ذكي للكروت */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px;
+}
+
+/* تنسيق البطاقة (الكارت) */
+.book-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: 0.3s;
+    border: 1px solid #f0f0f0;
+}
+/* تحسين الكارت للموبايل */
+@media (max-width: 400px) {
+    .books-grid {
+        grid-template-columns: 1fr; /* كارت واحد عريض جداً في الشاشات الصغيرة جداً */
+    }
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+/* تنسيق الصورة نفسها */
+.cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px; /* حواف ناعمة للصورة نفسها */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* ظل خفيف يخلي شكل الكتاب احترافي */
+}
+
+/* الجزء العلوي (صورة الكتاب الوهمية) */
+.card-header {
+  position: relative;
+  padding: 15px;
+  height: 220px;
+  background: linear-gradient(135deg, #e8e6e1 0%, #f4f1ea 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.category-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px; /* لأننا في وضع RTL، اليسار هو المناسب للتصنيف */
+  background: rgba(255, 255, 255, 0.9);
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-size: 11px;
+  color: #555;
+}
+
+.book-placeholder .icon {
+  font-size: 60px;
+  opacity: 0.3;
+}
+
+/* الجزء السفلي (النصوص والأزرار) */
+.card-body {
+  padding: 20px;
+  text-align: right;
+  z-index: 2; /* يضمن إن الكلام دائماً فوق أي عنصر آخر */
+}
+
+.book-title {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #1a3c34;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.book-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #7a7a7a;
+}
+
+.book-info p {
+  margin: 0;
+}
+
+/* زر التحميل الأخضر */
+.download-btn {
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* عشان الـ padding ميکشبرش الحجم الزيادة */
+  padding: 12px;
+  border: none;
+  font-size: small;
+  border-radius: 12px;
+  background-color: #2d4f43;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-decoration: none;
+  
+}
+
+.download-btn:hover {
+  background-color: #1a3c34;
+}
+
+/* تجاوب التصميم للجوال */
+@media (max-width: 600px) {
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.main-footer {
+    padding: 40px 20px;
+    background: #f4f1ea;
+    margin-top: 50px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* المسافة بين السطور */
+}
+
+/* تنسيق الشعار */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.logo-text {
+  font-weight: bold;
+  font-size: 18px;
+  color: #1a3c34;
+}
+
+.logo-box {
+  background-color: #2d4f43;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+/* تنسيق النصوص */
+.made-with {
+  font-size: 14px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+.heart {
+  color: #3c94e7; /* لون القلب الأحمر */
+  margin: 0 3px;
+  text-decoration: none;
+}
+
+.copyright {
+  font-size: 12px;
+  color: #b0b0b0;
+  margin: 0;
+}
+
+/* تنسيق النافذة المنبثقة (Modal) */
+.modal {
+  display: none; /* مخفية افتراضياً */
+  position: fixed;
+  z-index: 2000; /* أعلى من الهيدر */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* خلفية سوداء شفافة */
+  backdrop-filter: blur(5px);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    width: 95%;
+    max-width: 700px;
+    margin: 20px;
+    max-height: 90vh; /* لا يتعدى طول الشاشة */
+    overflow-y: auto; /* إضافة سكرول داخلي لو النص طويل */
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #888;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: #e74c3c;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row; /* الوضع الافتراضي جنب بعض */
+    gap: 20px;
+}
+
+.modal-image {
+  flex: 1;
+  background: #f4f1ea;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  font-size: 80px;
+}
+
+.modal-text {
+  flex: 1.5;
+}
+
+.modal-text h2 {
+  color: #1a3c34;
+  margin-top: 0;
+}
+
+.modal-category {
+  color: #2d4f43;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.description {
+  color: #666;
+  line-height: 1.6;
+  font-size: 14px;
+  margin: 15px 0;
+}
+
+.book-card {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.book-card[style*="display: block"] {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+
+
+/* --- Media Queries الشاملة لكل الأجهزة --- */
+
+/* للشاشات المتوسطة (Tablets) */
+@media (max-width: 992px) {
+    .container {
+        justify-content: center;
+        text-align: center;
+    }
+    .search-container {
+        max-width: 100%;
+    }
+    .logo-section {
+      white-space: nowrap;
+      flex-wrap: nowrap;
+      gap: 10px;
+      margin-left: 10px;
+    }
+    
+    
+}
+
+/* للهواتف المحمولة (Phones) */
+@media (max-width: 768px) {
+    .logo-section {
+      white-space: nowrap;
+      flex-wrap: nowrap;
+      gap: 5px;
+        
+    }
+    
+    .modal-body {
+        flex-direction: column; /* جعل الصورة فوق النص في الموبايل */
+        align-items: center;
+    }
+    
+    .modal-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .footer-container {
+        text-align: center;
+    }
+}
+
+/* للهواتف الصغيرة جداً */
+@media (max-width: 480px) {
+    .main-header {
+        padding: 10px;
+    }
+    .text-content h1 {
+        font-size: 20px;  
+    }
+    .tag {
+        flex: 1 1 40%; /* جعل الأزرار تأخذ مساحة متساوية */
+        text-align: center;
+    }
+    .container {
+        flex-direction: column; /* العودة للترتيب العمودي في الموبايل */
+        padding: 10px 0;
+    }
+    
+    .logo-section {
+        flex-direction: row-reverse;
+        margin-bottom: 5px;
+    }
+    
+    .search-container {
+        max-width: 100%; /* البحث يأخذ العرض الكامل في الموبايل */
+    }
+}
+
+/* لو عايز الكتب تظهر بتأثير Fade */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* تحسين المظهر على الجوال */
+@media (max-width: 480px) {
+  .main-footer {
+    padding: 30px 15px;
+  }
+}
+
